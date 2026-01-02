@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Services from './components/Services';
+import Team from './components/Team';
+import About from './components/About'; // <--- TAMBAH INI UNTUK FILE ABOUT.JS
 
 function App() {
   // STATE: This remembers if the mobile menu is open or closed
@@ -77,13 +80,18 @@ function App() {
         </div>
       </header>
 
-      {/* --- PLACEHOLDER FOR MEMBER 2 WORK --- */}
-      <main className="container mx-auto px-4 py-16 flex-grow">
-        <div className="border-2 border-dashed border-gray-300 bg-white p-12 text-center rounded-xl">
-           <h2 className="text-2xl font-bold text-gray-400 mb-2">Work Area</h2>
-           <p className="text-gray-500">The "Services" and "Team" components will be injected here.</p>
-        </div>
-      </main>
+
+        {/* --- PLACEHOLDER FOR MEMBER 2 WORK --- */}
+        <main className="container mx-auto px-4 py-16 flex-grow">
+
+            {/* Masukkan Services Component kat sini */}
+            <Services />
+            {/* Masukkan Team Component kat sini */}
+            <Team />
+            {/* Masukkan About Component kat sini */}
+            <About />
+
+        </main>
 
       {/* --- FOOTER (Member 1) --- */}
       <footer className="bg-slate-900 text-gray-400 py-8 text-center border-t border-gray-800">
