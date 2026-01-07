@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Services from './components/Services';
 import Team from './components/Team';
 import About from './components/About'; // <--- TAMBAH INI UNTUK FILE ABOUT.JS
+import heroBg from './hero-bg.jpg';
 
 function App() {
   // STATE: This remembers if the mobile menu is open or closed
@@ -55,8 +56,12 @@ function App() {
       </nav>
 
       {/* --- HERO SECTION (Member 1) --- */}
-      <header className="bg-slate-900 text-white py-24 px-6 text-center relative overflow-hidden">
-        {/* Decorative background circle */}
+      <header
+        className="relative text-white py-24 px-6 text-center overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.5), #0f172a), url(${heroBg})`
+        }}
+      >
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full opacity-10 pointer-events-none">
             <div className="w-96 h-96 bg-teal-500 rounded-full blur-3xl absolute top-10 left-10"></div>
         </div>
