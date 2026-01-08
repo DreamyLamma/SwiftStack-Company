@@ -1,26 +1,36 @@
 const express = require('express');
-const path = require('path');
+const cors = require('cors'); // You will need to install this
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// 1. Enable CORS so your Netlify site can talk to this server
+app.use(cors());
+
+// 2. Middleware to parse JSON
 app.use(express.json());
 
-// Path to your React build folder
-const buildPath = path.join(__dirname, 'swiftstack-web', 'build');
-app.use(express.static(buildPath));
-
-// API for Contact Us
+// 3. API for Contact Us
 app.post('/api/contact', (req, res) => {
-    console.log("Contact Data:", req.body);
-    res.json({ success: true });
+    console.log("📩 Received Contact Data:", req.body);
+
+    // In a real app, you'd send an email here.
+    // For now, we return success to trigger your React animation.
+    res.json({
+        success: true,
+        message: "Message received by SwiftStack Cloud"
+    });
 });
 
-// SAFE FOR NODE v24: This is a Regex literal.
-// It matches everything and bypasses the PathError.
-app.get(/^(?!\/api).+/, (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
+// 4. Simple Health Check (Good for Render to see if server is alive)
+app.get('/', (req, res) => {
+    res.send("SwiftStack Backend is Running...");
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 SwiftStack Server is LIVE at http://localhost:${PORT}`);
+    console.log(`-----------------------------------------------`);
+    console.log(`🚀 SwiftStack Backend is ACTIVE`);
+    console.log(`📡 Internal Port: ${PORT}`);
+    console.log(`🔗 Local Link:    http://localhost:${PORT}`);
+    console.log(`🌐 Cloud Link:    https://swiftstack-api.onrender.com`);
+    console.log(`-----------------------------------------------`);
 });
